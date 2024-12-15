@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/task.css">
+    <title>view task</title>
+</head>
+<body>
+    <nav id="navbar-loggedin">
+        <a href="/logout" class="logout-nav-loggedin">Logout</a>
+        <a href="/Addtask" class="addtask-nav-loggedin">Add Fresh Task</a>
+        <a href="/" class="home-nav-loggedin">Home</a>
+    </nav>
+    <div class="view-task-div">
+        <h3 class="view-title"><%= title[0].toUpperCase()+ title.substring(1) %></h3>
+        <div class="date-del-edit-div">
+            <h3 class="view-date">Created on <%= date %></h3>
+            <div class="edit-del-div">
+                <a href="/deletetask/<%= id %>"class="viewdeletebtn-link"><img src="/img/delete.png" class="viewdeletebtn"></a>
+                <a href="/edittask/<%= id %>" class="vieweditbtn-link"><img src="/img/edit.png" class="vieweditbtn"></a>
+            </div>
+        </div>
+        <div class="view-data"><%= data %></div>
+        
+
+        <img src="/img/logo.png" id="whatsapp-share" data-title="<%= title %>" data-date="<%= date %>" data-data="'<%=data %>"></img>
+        <img src="/img/new-email.png" id="sms-share" data-title="<%= title %>" data-date="<%= date %>" data-data="'<%=data %>"></img>
+
+
+    </div>
+<script src="/js/task.js"></script>
+</body>
+</html>

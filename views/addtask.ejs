@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/task.css">
+    <title>add task</title>
+</head>
+<body>
+    <nav id="navbar-loggedin">
+        <a href="/logout" class="logout-nav-loggedin">Logout</a>
+        <a href="/Addtask" class="addtask-nav-loggedin">Add Fresh Task</a>
+        <a href="/" class="home-nav-loggedin">Home</a>
+    </nav>
+    <div class="posttask">
+        <form method="post" action="/ADDtask">
+            <input placeholder="Enter title" name="taskname" class="tasktitle">
+            <textarea placeholder="Enter task" name="data" class="taskdata"></textarea>
+            <label name="enc" value="enc" class="pvcy">Encrpyt</label>
+            <input type="checkbox" name="enc"  class="check">
+            <button type="submit" class="tasksubbtn">Add</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/task.css">
+    <title>Edit task</title>
+</head>
+<body>
+    <nav id="navbar-loggedin">
+        <a href="/logout" class="logout-nav-loggedin">Logout</a>
+        <a href="/Addtask" class="addtask-nav-loggedin">Add Fresh Task</a>
+        <a href="/" class="home-nav-loggedin">Home</a>
+    </nav>
+    <form method="post" action="/updatetask/<%= id %>" class="edit-form">
+        <textarea name="title" class="edit-title"><%= title %></textarea>
+        <h4 class="edit-date"><%= date %></h4>
+        <textarea class="edittaskarea" name="data" ><%= data %></textarea>
+        <label class="editenc">Encryption</label>
+        <%if(isEncrypted){%>
+        <input type="checkbox" name="enc" checked class="edit-check-enc">
+        <%}else{%>
+        <input type="checkbox" name="enc" class="edit-check">
+       <% } %>
+        <button  type="submit" class="edit-update-btn">Update</button>
+    </form>
+
+</body>
+</html>

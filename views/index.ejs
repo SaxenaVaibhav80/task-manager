@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/task.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet"> -->
+    <title>Task managing App</title>
+</head>
+<body class="newhomepage">
+    <div>
+        <% if (loggedIn) { %>
+        <div class="loggedin-home">
+            <nav id="navbar-loggedin">
+                <a href="/logout" class="logout-nav-loggedin">Logout</a>
+                <a href="/Addtask" class="addtask-nav-loggedin">Add Fresh Task</a>
+                <a class="usercall">Hello,<%= username %></a>
+            </nav>
+            
+            <div class="label-collection">
+                <%  newToOld_array.forEach((info) => { %>
+                    <div class="label">
+                        <% if (info.isEncrypted) { %>
+                            <div class="enc-date">
+                                <div class="encrypted">Encrypted</div>
+                                <p class="date">created on date:<%= info.date %></p>
+                            </div>
+                            
+                        <% } else{%>
+                            <div class="vis-date">
+                                <div class="visible">Available</div>
+                                <p class="date"> created on date: <%= info.date %></p>
+                            </div>
+                        <% }%>
+                        <p class="title">Task Name: <%= info.taskname %></p>
+
+                        <% if(info.isEncrypted) { %>
+                            <form method="post" action="/viewtask/<%=info._id %>" class="passcode">
+                               <input placeholder="Passcode" name="pass" required class="passcode-field" type="password">
+                               <button type="submit" class="passcode-send-btn">submit</button>
+                            </form>
+                        <%}else{%>
+                            <div class="view-del-div">
+                                <a href="/viewtask/<%= info._id %>" class="view">View task</a>
+                                <a href="/deletetask/<%= info._id %>"><img src="/img/delete.png" alt="delete" class="deletebtn"></a>
+                            </div>
+                        <%}%>
+                            
+                    </div>
+                <% }) %>
+            </div>
+            
+        </div>
+        <% } else{%>
+           <div class="home">
+                <nav id="navbar">
+                    <a href="/Addtask" class="nav-addtask">Add Fresh Khata</a>
+                    <% if (loggedIn) { %>
+                        <a href="/logout" class="nav-logout">Logout</a>
+                    <% } else { %>
+                        <a href="/signup" class="nav-signup">Signup</a>
+                        <a href="/login" class="nav-login">Login</a>
+                    <% } %>
+                    
+                </nav>
+                <div class="introdiv"> 
+                    <h1 class="introhead">Daily Tasks Manage System</h1>
+                    <p class="intro-detail">Manage your daily Tasks</p>
+                </div> 
+                <div class="signup-login">
+                    <a href="/signup" class="signupbtn-link"><button class="signupbtn">Signup</button></a>
+                    <a href="/login" class="loginbtn-link"><button class="loginbtn">Login</button></a>
+                </div>
+           </div>
+        <%} %>
+    </div>
+</body>
+</html>
